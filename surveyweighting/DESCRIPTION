@@ -1,0 +1,14 @@
+Package: surveyweighting
+Title: Survey weighting
+Version: 0.1
+Authors@R: 
+   c(person("Juris", "Breidaks",
+      email = "Juris.Breidaks@csb.gov.lv",
+      role = c("aut", "cre")))
+Description: Nonresponse correction, calibration with absolute and relative errors.
+Depends: R (>= 3.6.0)
+Imports: data.table, caret, quantreg, matrixcalc, MASS, sampling
+License: EUPL
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.0.2
