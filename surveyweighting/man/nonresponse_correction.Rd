@@ -11,6 +11,7 @@ nonresponse_correction(
   response_ind = "ievad",
   summary_w = "kops_sv",
   design_weight = "diz_sv",
+  pop_size = NULL,
   strata = "strata",
   dataset
 )
@@ -26,7 +27,9 @@ nonresponse_correction(
 
 \item{summary_w}{(\code{character}) summary weight indicator variable name, that indicates which respondents have a weight greater than zero. Weight will be used to calculate summaries.}
 
-\item{design_weight}{teksts (\code{character}) - design weight variable name.}
+\item{design_weight}{(\code{character}) - design weight variable name.}
+
+\item{pop_size}{(\code{character}) - population size in strata variable name.}
 
 \item{strata}{(\code{character}) - strata variable name;}
 
