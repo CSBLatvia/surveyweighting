@@ -39,7 +39,7 @@ nonresponse_correction <- function(in_system = "in_isdavs",
 
   ..pop_size <- ..design_weight <- koef <- ievad <- ievad_sum <- koef_nodot <- NULL
 
-  skaits_stratas <- dataset[, lapply(.SD, sum, na.rm = TRUE), keyby = strata,
+  skaits_stratas <- dataset[, lapply(.SD, sum, na.rm = TRUE), keyby = c(strata),
                             .SDcols = c(response_ind, summary_w, frame, in_system, sample)]
 
   setnames(skaits_stratas, c(response_ind, summary_w, frame, in_system, sample),
