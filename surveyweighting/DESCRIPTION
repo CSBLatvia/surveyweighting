@@ -1,6 +1,6 @@
 Package: surveyweighting
 Title: Survey weighting
-Version: 0.2
+Version: 0.3
 Authors@R: 
    c(person("Juris", "Breidaks",
       email = "Juris.Breidaks@csb.gov.lv",

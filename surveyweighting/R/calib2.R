@@ -134,10 +134,17 @@ calib2 <-  function(Xs_old, d, total_old, q = rep(1, length(d)),
   lambda1 = ginv(t(Xs * d * q) %*% Xs, tol = EPS) %*% (total -
                                                          as.vector(t(d) %*% Xs))
   if (relative_error | method == "linear" | max(abs(lambda1)) < EPS) {
-    g <- calib(Xs = Xs, d = d, total = total,
-               q = q, method = method,
-               bounds = bounds, description = FALSE,
-               max_iter = max_iter)
+    if (method %in% c("linear", "raking")){
+      g <- calib(Xs = Xs, d = d, total = total,
+                 q = q, method = method,
+                 description = FALSE,
+                 max_iter = max_iter)
+    } else {
+      g <- calib(Xs = Xs, d = d, total = total,
+                 q = q, method = method,
+                 bounds = bounds, description = FALSE,
+                 max_iter = max_iter)
+    }
   } else if (!relative_error & method == "truncated") {
     if (!missing(bounds)) {
       if (bounds[2] <= 1 || bounds[1] >= 1 || bounds[1] >
