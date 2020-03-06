@@ -57,6 +57,7 @@ calib2 <-  function(Xs_old, d, total_old, q = rep(1, length(d)),
                     constant = TRUE, verbose = FALSE, relative_error = FALSE,
                     digit_level = 6, print_indvar = FALSE) {
 
+  Xs_d <- Xs_d_g <- change <- real <- NULL
 
   if (any(is.na(Xs_old)) | any(is.na(d)) | any(is.na(total_old)) |
       any(is.na(q)))
@@ -290,13 +291,15 @@ calib2 <-  function(Xs_old, d, total_old, q = rep(1, length(d)),
 
   result <- NULL
   if (!is.null(g)) {
-    result <- data.table(Xs_d = crossprod(Xs_old, d),
-                         Xs_d_g = crossprod(Xs_old, d * g),
-                         real = total_old)
-    result$change <- round(result$real - result$Xs_d_g, digit_level)
-    result$diff <- round(result$real - result$Xs_d_g, digit_level)
-    names(result)[1:2] <- list("Xs*d", "Xs*d*g")
+    result <- data.table(nos = colnames(Xs_old),
+                         Xs_d = as.vector(crossprod(Xs_old, d)),
+                         Xs_d_g = as.vector(crossprod(Xs_old, d * g)),
+                         real = total_old, check.names = TRUE)
+    result[, change := round(real - Xs_d, digit_level)]
+    result[, diff := round(real - Xs_d_g, digit_level)]
+    setnames(result, c("Xs_d", "Xs_d_g"), c("Xs*d", "Xs*d*g"))
   }
+
   if (description && !is.null(g)) {
     par(mfrow = c(3, 2), pty = "s")
     hist(g)
