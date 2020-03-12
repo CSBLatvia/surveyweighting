@@ -37,6 +37,7 @@ write.table(df, file = paste0(package_name, "_", ver, "_checksums.md5"),
 # Install and load
 detach("package:surveyweighting", unload = TRUE)
 
+
 # Installē bināro versiju
 install.packages(paste0(package_name, "_", ver, ".zip"), repos = NULL)
 
