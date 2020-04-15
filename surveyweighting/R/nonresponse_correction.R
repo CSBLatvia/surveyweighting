@@ -47,14 +47,13 @@ nonresponse_correction <- function(in_system = "in_isdavs",
 
   dataset <- merge(dataset, skaits_stratas, by = c(strata), all = TRUE)
 
+  if (!is.null(dataset$koef)) dataset[, koef := NULL]
   dataset[, koef := 0]
-
   if (is.null(pop_size)) {
     dataset[get(response_ind) == 1, koef := get(response_ind) * get(..design_weight) * get(paste0(sample, "_sum")) / get(paste0(response_ind, "_sum"))]
   } else {
     dataset[get(response_ind) == 1, koef := get(response_ind) * get(..pop_size) / get(paste0(response_ind, "_sum"))]
   }
-
   dataset[, koef_nodot := get(summary_w) * koef]
 
   dataset[]
