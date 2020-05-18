@@ -17,9 +17,9 @@ nonresponse_correction(
 )
 }
 \arguments{
-\item{in_system}{(\code{character}) - ISDAVS sistēma, kurā veikts apsekojums}
+\item{in_system}{(\code{character}) - indicator that tell us, is data in system.}
 
-\item{sample}{(\code{character}) - sampling indicator;}
+\item{sample}{(\code{character}) - sampling indicator.}
 
 \item{frame}{(\code{character}) - frame indicator variable name.}
 

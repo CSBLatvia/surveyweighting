@@ -2,13 +2,15 @@
 #'
 #' Caclutate nonresponse correction factor for single stage surveys
 #'
-#' @param in_system (\code{character}) - ISDAVS sistēma, kurā veikts apsekojums
-#' @param sample (\code{character}) - sampling indicator;
+#' @param in_system (\code{character}) - indicator that tell us, is data in system.
+#' @param sample (\code{character}) - sampling indicator.
 #' @param frame (\code{character}) - frame indicator variable name.
+#' @param outlier (\code{character}) - outlier indicator variable name.
 #' @param response_ind (\code{character}) - response indicator variable name,  that indicates which respondents are weighted in the weight calculation process.
 #' @param summary_w (\code{character}) summary weight indicator variable name, that indicates which respondents have a weight greater than zero. Weight will be used to calculate summaries.
 #' @param design_weight (\code{character}) - design weight variable name.
 #' @param pop_size (\code{character}) - population size in strata variable name.
+#' @param new_pop_size (\code{character}) - updated frame population size in strata variable name.
 #' @param strata (\code{character}) - strata variable name;
 #' @param dataset data.table;
 #'
@@ -30,20 +32,25 @@
 nonresponse_correction <- function(in_system = "in_isdavs",
                                      sample = "izlase",
                                      frame = "frame",
+                                     outlier = NULL,
                                      response_ind = "ievad",
                                      summary_w = "kops_sv",
                                      design_weight = "diz_sv",
                                      pop_size = NULL,
+                                     new_pop_size = NULL,
                                      strata = "strata",
                                      dataset){
 
   ..pop_size <- ..design_weight <- koef <- ievad <- ievad_sum <- koef_nodot <- NULL
 
   skaits_stratas <- dataset[, lapply(.SD, sum, na.rm = TRUE), keyby = c(strata),
-                            .SDcols = c(response_ind, summary_w, frame, in_system, sample)]
+                            .SDcols = c(response_ind, summary_w, frame,
+                                        outlier, in_system, sample)]
 
-  setnames(skaits_stratas, c(response_ind, summary_w, frame, in_system, sample),
-                    paste0(c(response_ind, summary_w, frame, in_system, sample), "_sum"))
+  setnames(skaits_stratas, c(response_ind, summary_w, frame,
+                             outlier, in_system, sample),
+                    paste0(c(response_ind, summary_w, frame,
+                             outlier, in_system, sample), "_sum"))
 
   dataset <- merge(dataset, skaits_stratas, by = c(strata), all = TRUE)
 

@@ -2,6 +2,7 @@
 
 export(Calibrationerrors)
 export(calib2)
+export(detect_outlier)
 export(nonresponse_correction)
 import(MASS)
 import(data.table)
