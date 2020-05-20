@@ -1,6 +1,6 @@
 #' Nonresponse correction for single stage surveys
 #'
-#' Caclutate nonresponse correction factor for single stage surveys
+#' @description Calcutate nonresponse correction factor for single stage surveys
 #'
 #' @param in_system (\code{character}) - indicator that tell us, is data in system.
 #' @param sample (\code{character}) - sampling indicator.
@@ -19,8 +19,8 @@
 #' @seealso \code{\link{Calibrationerrors}}
 #'
 #' @examples
-#' \donttest{
 #' library(data.table)
+#' \donttest{
 #'
 #' }
 #'
@@ -65,6 +65,5 @@ nonresponse_correction <- function(in_system = "in_isdavs",
 
   dataset[]
 }
-
 
 

@@ -1,6 +1,6 @@
 #' Calibration errors
 #'
-#' Calculate maximum absolute error and maximum relative error
+#' @description Calculate maximum absolute error and maximum relative error
 #'
 #' @param Xs matrix of calibration variables.
 #' @param d vector of initial weights.
@@ -28,7 +28,7 @@
 #'
 #' @import matrixcalc
 #' @import data.table
-#'
+
 
 
 Calibrationerrors <- function(Xs, d, total, g) {

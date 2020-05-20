@@ -1,6 +1,6 @@
 #' Calculated Outliers for single stage surveys
 #'
-#' Detected outliers for single stage surveys.
+#' @description Detected outliers for single stage surveys.
 #'
 #' @param id (\code{character}) - unit id variable name.
 #' @param vars (\code{character}) - variable name.

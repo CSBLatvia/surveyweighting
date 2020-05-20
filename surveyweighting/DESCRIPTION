@@ -3,7 +3,7 @@ Title: Survey weighting
 Version: 0.6
 Authors@R: 
    c(person("Juris", "Breidaks",
-      email = "Juris.Breidaks@gmail.com",
+      email = "rcsb@rcsb.gov.lv",
       role = c("aut", "cre")))
 Description: Nonresponse correction, calibration with absolute and relative errors.
 Depends: R (>= 3.6.0)

@@ -8,10 +8,12 @@ nonresponse_correction(
   in_system = "in_isdavs",
   sample = "izlase",
   frame = "frame",
+  outlier = NULL,
   response_ind = "ievad",
   summary_w = "kops_sv",
   design_weight = "diz_sv",
   pop_size = NULL,
+  new_pop_size = NULL,
   strata = "strata",
   dataset
 )
@@ -23,6 +25,8 @@ nonresponse_correction(
 
 \item{frame}{(\code{character}) - frame indicator variable name.}
 
+\item{outlier}{(\code{character}) - outlier indicator variable name.}
+
 \item{response_ind}{(\code{character}) - response indicator variable name,  that indicates which respondents are weighted in the weight calculation process.}
 
 \item{summary_w}{(\code{character}) summary weight indicator variable name, that indicates which respondents have a weight greater than zero. Weight will be used to calculate summaries.}
@@ -30,6 +34,8 @@ nonresponse_correction(
 \item{design_weight}{(\code{character}) - design weight variable name.}
 
 \item{pop_size}{(\code{character}) - population size in strata variable name.}
+
+\item{new_pop_size}{(\code{character}) - updated frame population size in strata variable name.}
 
 \item{strata}{(\code{character}) - strata variable name;}
 
@@ -39,11 +45,11 @@ nonresponse_correction(
 dataset - survey data with weight (koef) and summary weight (koef_nodot).
 }
 \description{
-Caclutate nonresponse correction factor for single stage surveys
+Calcutate nonresponse correction factor for single stage surveys
 }
 \examples{
-\donttest{
 library(data.table)
+\donttest{
 
 }
 

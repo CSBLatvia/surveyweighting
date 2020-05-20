@@ -1,6 +1,6 @@
 #' Calibration errors
 #'
-#' Computes the g-weights of the calibration estimator.
+#' @description Computes the g-weights of the calibration estimator.
 #'
 #' @param Xs_old matrix of calibration variables.
 #' @param d vector of initial weights.
@@ -49,7 +49,8 @@
 #' @importFrom graphics hist
 #' @importFrom graphics par
 #' @importFrom stats cor
-#'
+
+
 calib2 <-  function(Xs_old, d, total_old, q = rep(1, length(d)),
                     method = c("linear", "raking", "truncated", "logit"),
                     bounds = c(low = 0, upp = 10), description = FALSE,
