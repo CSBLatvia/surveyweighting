@@ -27,7 +27,7 @@ detect_outlier(
 
 \item{b}{(\code{numeric}) - the user-dependent attitude to distances between succeeding values.}
 
-\item{a}{(\code{numeric}) the threshold}
+\item{a}{(\code{numeric}) - the threshold.}
 
 \item{nd_log}{(\code{numeric}) - correction for calculating average density of consecutive values}
 
@@ -36,6 +36,12 @@ detect_outlier(
 \item{percthreshold}{(\code{numeric}) - percentage of the threshold;}
 }
 \value{
+A list with two objects
+\itemize{
+   \item datao - data.table with outliers
+   \item count - count of the outliers.
+}
+
 dataset - survey data with outliers.
 }
 \description{

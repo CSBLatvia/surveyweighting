@@ -6,11 +6,17 @@
 #' @param vars (\code{character}) - variable name.
 #' @param group (\code{character}) - group variable name.
 #' @param b (\code{numeric}) - the user-dependent attitude to distances between succeeding values.
-#' @param a (\code{numeric}) the threshold
+#' @param a (\code{numeric}) - the threshold.
 #' @param nd_log (\code{numeric}) - correction for calculating average density of consecutive values
 #' @param nd_log2 (\code{numeric}) - second correction for calculating average density of consecutive values
 #' @param percthreshold (\code{numeric}) - percentage of the threshold;
 #' @param dataset data.table;
+#'
+#' @return A list with two objects
+#' \itemize{
+#'    \item datao - data.table with outliers
+#'    \item count - count of the outliers.
+#' }
 #'
 #' @references
 #' Mark Last, Abraham Kandelm, Automated Detection of Outliers in Real-World Data, \url{http://www.ise.bgu.ac.il/faculty/mlast/papers/outliers2.pdf}
@@ -83,8 +89,7 @@ detect_outlier <- function(id, vars, group, dataset, b = 1,
   #temp2[apgr_isd < vv | vv == 0, outl := 0]
   temp2_vars[is.na(outl_v), outl_v := 0]
 
-  print("outliers")
-  print(table(temp2_vars$outl_v, useNA = "ifany"))
+  outliers <- table(temp2_vars$outl_v, useNA = "ifany")
 
   temp2_vars[, c("N", "d", "nd", "m", "lag_1", "lag_m1", "powh", "mu", "casen",
                  "ll", "nv", "nv_sum", "z2", "outl", "uu", "vv") := NULL]
@@ -93,5 +98,5 @@ detect_outlier <- function(id, vars, group, dataset, b = 1,
   data_w <- data_w[, c(id, "outl_v"), with = FALSE]
 
   setnames(data_w, "outl_v", paste0("outl_", vars))
-  return(data_w[])
+  return(datao = data_w[], count = outliers)
 }
