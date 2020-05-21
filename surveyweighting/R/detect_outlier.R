@@ -98,5 +98,5 @@ detect_outlier <- function(id, vars, group, dataset, b = 1,
   data_w <- data_w[, c(id, "outl_v"), with = FALSE]
 
   setnames(data_w, "outl_v", paste0("outl_", vars))
-  return(datao = data_w[], count = outliers)
+  return(list(datao = data_w[], count = outliers))
 }
