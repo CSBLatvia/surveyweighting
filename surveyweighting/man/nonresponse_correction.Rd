@@ -8,12 +8,11 @@ nonresponse_correction(
   in_system = "in_isdavs",
   sample = "izlase",
   frame = "frame",
-  outlier = NULL,
+  big_units = "lielu",
   response_ind = "ievad",
   summary_w = "kops_sv",
   design_weight = "diz_sv",
   pop_size = NULL,
-  new_pop_size = NULL,
   strata = "strata",
   dataset
 )
@@ -25,7 +24,7 @@ nonresponse_correction(
 
 \item{frame}{(\code{character}) - frame indicator variable name.}
 
-\item{outlier}{(\code{character}) - outlier indicator variable name.}
+\item{big_units}{(\code{character}) - big unit indicator variable name.}
 
 \item{response_ind}{(\code{character}) - response indicator variable name,  that indicates which respondents are weighted in the weight calculation process.}
 
@@ -34,8 +33,6 @@ nonresponse_correction(
 \item{design_weight}{(\code{character}) - design weight variable name.}
 
 \item{pop_size}{(\code{character}) - population size in strata variable name.}
-
-\item{new_pop_size}{(\code{character}) - updated frame population size in strata variable name.}
 
 \item{strata}{(\code{character}) - strata variable name;}
 
