@@ -17,3 +17,4 @@ test
 *.7z
 *.Rcheck
 Thumbs.db
+write-test-*
